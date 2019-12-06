@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link type="text/css" rel="stylesheet" href="/css/layout.css"/>
+        <link type="text/css" rel="stylesheet" href="/css/elements.css"/>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine"> 
+    </head>
+    
+    <body>
+        <div class="header" style="background-image:url('/img/header.jpg');">
+            <h1 style="font-family:Tangerine;color:white;font-size:42px;">MUMBAI </h1><h1 style="font-family:Tangerine;color:white">TOURISM</h1>
+            <marquee style="color:red"><h2>Welcome to mumbai site!</h2></marquee>
+        </div>
+        
+        <ul class="navbar">
+        	<li><a th:href="@{/user/profile}" target="i_frame">Profile</li>
+        	
+            <li><a th:href="@{/home/home}" target="i_frame">Home</li>
+            
+            <li><a th:href="@{/home/sites}" target="i_frame">Site seeing</li>
+            
+            <li th:if="${role == 'ADMIN'}"><a th:href="@{/admin/addsite}">Add sites</li>
+            
+            <li th:if="${role == 'ADMIN'}"><a th:href="@{/admin/adddriver}">Add drivers</li>
+            
+           	<li th:if="${isLogin == true}" id="loglink"><a th:href="@{/logout}">Logout</a></li>
+           	
+           	<li th:if="${isLogin == false}" id="loglink"><a th:href="@{/login}">Login</a></li>
+        </ul>
+        
+        <div class="container">
+
+            <div class="column side">
+                <p>Ad</p>
+            </div>
+            
+            <div class="column center">
+                <iframe th:src="@{/home/home}" height="100%" width="100%" id="frame" name="i_frame">
+                </iframe>
+            </div>
+
+            <div class="column side">
+                <p>Ad</p>
+            </div>
+
+        </div>
+        
+        <div class="footer" style="height:200px;background:black;color:white">
+            <center>
+            Made with <i class="fa fa-heart" style="font-size:10px;color:red"></i> by <br/><br/>
+            Atharva Kalsekar<br/><br/>
+            Sameer Mandloi<br/><br/>
+            Rogin Koshy<br/><br/>
+            </center>
+            <br/>
+            <a href="https://www.facebook.com" target="_blank" style="margin-left:5%"><i class="fa fa-facebook-square" style="font-size:30px;color:blue"></i> </a>
+            <a href="https://www.twitter.com" target="_blank" style="margin-left:40%"><i class="fa fa-twitter" style="font-size:30px;color: #1da1f2"></i> </a>
+            <a href="https://www.instagram.com" target="_blank" style="margin-left:40%"><i class="fa fa-instagram" style="font-size:30px;color:orange"></i> </a>
+        </div>
+        
+        
+        
+    </body>
+    
+</html>

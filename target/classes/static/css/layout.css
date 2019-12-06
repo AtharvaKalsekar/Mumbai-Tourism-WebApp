@@ -1,0 +1,95 @@
+.header
+{
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 20px;
+    height: 20vw;
+    width: auto;
+    margin: 10px; 
+    background-position: center; 
+  	background-repeat: no-repeat;
+  	background-size: inherit;
+}
+
+.navbar
+{
+    overflow: hidden;
+    background-color: cornflowerblue;
+    margin: 10px;
+    padding:2px;
+    width: auto;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.navbar a
+{
+    padding: 10px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    text-decoration : none;
+    border: none;
+}
+
+.navbar li a:hover
+{
+    background-color: royalblue;
+}
+
+.navbar button.active
+{
+    background-color: royalblue;   
+}
+
+
+.navbar li
+{
+    list-style: none;
+    float: left;
+    margin: 10px;
+    padding:2px;
+    width: auto;
+}
+
+#loglink
+{
+	list-style: none;
+    float: right;
+    margin: 10px;
+    padding:2px;
+    width: auto;
+}
+.container
+{
+    margin:10px;
+    overflow: auto;
+    height: 500px;
+}
+
+.column 
+{
+    float: left;
+    border: 2px solid white;
+    box-sizing: border-box;
+    background-color: darkgrey;
+    height:13cm;
+}
+
+.column.side
+{
+    width: 15%;
+}
+
+.column.center
+{
+    width: 70%;
+}
+
+.footer
+{
+    background-color: gray;
+    padding: 0px;
+    margin: 10px;
+    height: 40px;
+}

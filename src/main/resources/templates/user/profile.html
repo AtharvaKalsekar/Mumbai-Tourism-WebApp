@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	  $("#addBalance").click(function(){
+	    $("#updating").toggle();
+	    //$("p").css("background-color", "yellow");
+	  });
+	  $("#viewHistory").click(function(){
+		    $("#history").toggle();
+		  });
+	});
+	</script>
+	<style type="text/css">
+	.profilePicture
+	{
+	    background-color: #FFFFFF;
+	    text-align: center;
+	    padding: 20px;
+	    height: 20vw;
+	    width: auto;
+	    margin: 10px; 
+	    background-position: center; 
+	  	background-repeat: no-repeat;
+	  	background-size: inherit;
+	}
+
+	.usercontent{
+	text-align: center;
+	}
+	
+	#customers 
+	{
+	  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	  border-collapse: collapse;
+	  width: 100%;
+	}
+
+	#customers td, #customers th 
+	{
+	  border: 1px solid #ddd;
+	  padding: 8px;
+	  text-align: center;
+	}
+	
+	#customers tr:nth-child(even){background-color: #f2f2f2;}
+	
+	#customers tr:hover {background-color: #ddd;}
+	
+	#customers th {
+	  padding-top: 12px;
+	  padding-bottom: 12px;
+	  text-align: left;
+	  background-color: cornflowerblue;
+	  color: white;
+	}
+	
+	</style>	
+	</head>
+	<body>
+		<div class="profilePicture">
+			<img  alt="user profile picture" th:src="@{'data:image/jpeg;base64,'+${user.picture}}" align="middle" style="width:200px;height:inherit;"/>
+		</div>
+		<div class="usercontent">
+			<p> <h2 th:text="${user.firstname}"></h2></p>
+			<p> Wallet balance : <i th:text="${user.wallet}"/> </p>
+		
+		<button id="addBalance">Add Balance</button>
+		<br/>
+		<br/>
+		<div id="updating" style="display: none;">
+			<form method="POST" th:action="@{/user/updateBalance}">
+				<input type="number" th:name="amount"></input>
+				<input type="submit" value="add"></input>
+			</form>
+		</div></div>
+		<br/>
+		<br/>
+		<div th:if="${booking==true}">
+			<p th:text="${msg}"></p>
+		</div>
+		<br/>
+		<br/>
+		<a th:href="@{/user/history}">
+			<button id="viewHistory">View History</button>
+		</a>
+		<div id="history">
+			<table id="customers">
+				  <tr>
+				    <th>Trans_id</th>
+				    <th>User_id</th>
+				    <th>Site_id</th>
+				    <th>Site Name</th>
+				    <th>Payment</th>
+				    <th>Driver_id</th>
+				    <th>Driver Name</th>
+				    <th>Car Number</th>
+				    <th>Booking Date</th>
+				  </tr>
+				  <tr th:each="t:${trans}">
+				    <td th:text="${t.transId}"></td>
+				    <td th:text="${t.userId}"></td>
+				    <td th:text="${t.siteId}"></td>
+				    <td th:text="${t.siteName}"></td>
+				    <td th:text="${t.payment}"></td>
+				    <td th:text="${t.driverId}"></td>
+				    <td th:text="${t.driverName}"></td>
+				    <td th:text="${t.carNumber}"></td>
+				    <td th:text="${t.bookingDate}"></td>
+				  </tr>
+			</table>
+		</div>
+	</body>
+</html>

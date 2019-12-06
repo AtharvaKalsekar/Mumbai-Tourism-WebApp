@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+	    <link type="text/css" rel="stylesheet" href="/css/card.css"/>
+	    <link type="text/css" rel="stylesheet" href="/css/elements.css"/>     
+    </head>
+    <body>
+        <div class="card-list">
+        	<a th:each="site:${sites}" th:href="@{/home/siteProfile(siteName=${site.siteName})}" style="text-decoration: none;">
+	            <div class="card">
+	                <img th:src="@{'data:image/jpeg;base64,'+${site.sitePicture}}" alt="site image" class="card-img"/>
+	                <div class="card-content">
+	                    <h4 th:text="${site.siteName}"></h4>
+	                    <hr/>
+	                    <p th:text="${site.siteAddress}"></p>
+	                    <p th:text="${site.siteCost}"></p>
+	                </div>
+	            </div>
+            </a>
+        </div>
+        
+    </body>
+</html>

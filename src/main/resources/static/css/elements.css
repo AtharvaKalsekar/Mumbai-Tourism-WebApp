@@ -1,0 +1,14 @@
+iframe
+{
+    border: none;
+    background-color: white;
+    overflow: visible;
+    max-width: inherit;
+}
+
+ul
+{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}

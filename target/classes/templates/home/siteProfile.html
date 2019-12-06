@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	</head>
+	<body>
+		<div class="picture">
+			<img alt="site profile picture" th:src="@{'data:image/jpeg;base64,'+${site.sitePicture}}" style="width:100px;height:100px;"/>
+		</div>
+		<div class="content">
+			<p th:text="${site.siteName}"></p>
+			<p th:text="${site.siteDescription}"></p>
+			<p th:text="${site.siteAddress}"></p>
+			<p>Site cost : <b th:text="${site.siteCost}"></b></p>
+			<p>Your wallet balance : <b th:text="${user.wallet}"></b></p>
+		</div>
+		<div th:if="${visitorStatus == 'GUEST'}">
+			<input type="submit" value="Login to Book" onclick= 'newWindow()' />
+		</div>
+		<div th:if="${visitorStatus != 'GUEST'}">
+			<div th:if="${user.wallet} >= ${site.siteCost}">
+				<a th:href="@{/user/bookSite(siteName=${site.siteName},userWallet=${user.wallet},userId=${user.id})}">Book </a>
+			</div>
+			<div th:if="${user.wallet} < ${site.siteCost}">
+				<input type="submit" value="Add balance to wallet for booking" onclick="window.location='/user/profile';" />
+			</div>
+		</div>
+	</body>
+	<script type='text/javascript'>
+		function newWindow(){
+		  	top.location.href = '/login';
+		  };
+	</script>
+</html>
